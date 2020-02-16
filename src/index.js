@@ -7,10 +7,11 @@
  Посмотрите как работает forEach и повторите это поведение для массива, который будет передан в параметре array
  */
 function forEach(array, fn) {
-  for (let index = 0; index < array.length; index++) {
-    const element = array[index];
-    fn(element, index, array);
-  }
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+
+        fn(element, index, array);
+    }
 }
 
 /*
@@ -20,12 +21,15 @@ function forEach(array, fn) {
  Посмотрите как работает map и повторите это поведение для массива, который будет передан в параметре array
  */
 function map(array, fn) {
-  var newArray = []
-  for (let index = 0; index < array.length; index++) {
-    const element = array[index];
-    newArray.push(fn(element, index, array));
-  }
-  return newArray;
+    var newArray = [];
+
+    for (let index = 0; index < array.length; index++) {
+        const element = array[index];
+
+        newArray.push(fn(element, index, array));
+    }
+
+    return newArray;
 }
 
 /*
@@ -35,17 +39,21 @@ function map(array, fn) {
  Посмотрите как работает reduce и повторите это поведение для массива, который будет передан в параметре array
  */
 function reduce(array, fn, initial) {
-  var first;
-  if (initial) {
-    first = initial;
-  } else {
-    first = array[0];
-  }
-  for (let index = initial ? 0 : 1; index < array.length; index++) {
-    const element = array[index];
-    first = fn(first, element, index, array);
-  }
-  return first;
+    var first;
+
+    if (initial) {
+        first = initial;
+    } else {
+        first = array[0];
+    }
+
+    for (let index = initial ? 0 : 1; index < array.length; index++) {
+        const element = array[index];
+
+        first = fn(first, element, index, array);
+    }
+
+    return first;
 }
 
 /*
@@ -57,11 +65,15 @@ function reduce(array, fn, initial) {
    upperProps({ name: 'Сергей', lastName: 'Петров' }) вернет ['NAME', 'LASTNAME']
  */
 function upperProps(obj) {
-  var arr = [];
-  for (const key in obj) {
-      arr.push(key.toUpperCase())
-  }
-  return arr;
+    var arr = [];
+
+    for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            arr.push(key.toUpperCase());
+        }
+    }
+
+    return arr;
 }
 
 /*
